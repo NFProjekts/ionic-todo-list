@@ -1,20 +1,46 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title style="color: cornflowerblue"> My Todo List </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-item>
+    <ion-input placeholder="Enter new todo" [(ngModel)]="todo"></ion-input>
+    <ion-button
+      style="background-color: cornflowerblue"
+      slot="end"
+      size="default"
+      *ngIf="!updating"
+      (click)="addTodos()"
+      >Add</ion-button
+    >
+    <ion-button
+      style="background-color: cornflowerblue"
+      slot="end"
+      size="default"
+      *ngIf="updating"
+      (click)="handleUpdate()"
+      >Update</ion-button
+    >
+  </ion-item>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-list>
+    <ion-item slot="start" *ngFor="let item of myList">
+      {{item.message}}
+      <ion-item slot="end">
+        <ion-icon
+          name="create-outline"
+          (click)="handleEdit(item.id)"
+        ></ion-icon>
+      </ion-item>
+
+      <ion-item slot="end" [disabled]="updating">
+        <ion-icon
+          name="trash-outline"
+          (click)="handleDelete(item.id)"
+        ></ion-icon
+      ></ion-item>
+    </ion-item>
+  </ion-list>
 </ion-content>
