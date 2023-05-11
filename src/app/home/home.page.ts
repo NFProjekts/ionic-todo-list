@@ -10,7 +10,7 @@ export class HomePage {
   selectedItem: any;
   updating: boolean = false;
   newTodo = '';
-  index: number = 0;
+  index: any;
 
   constructor() {}
 
@@ -21,7 +21,6 @@ export class HomePage {
       this.myList.push({ id: newID, message: this.todo });
       this.todo = '';
       console.log(this.myList);
-    } else {
     }
   };
 
@@ -31,13 +30,13 @@ export class HomePage {
 
   public handleEdit = (id: number) => {
     this.updating = true;
-    this.index = this.myList.findIndex((todo) => todo.id === id);
-    this.todo = this.myList[this.index].message;
+    this.index = this.myList.find((idx) => idx.id === id);
+    this.todo = this.index.message;
   };
 
   public handleUpdate = () => {
     this.newTodo = this.todo;
-    this.myList[this.index].message = this.newTodo;
+    this.index.message = this.newTodo;
     this.todo = '';
     this.updating = false;
   };

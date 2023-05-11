@@ -13,7 +13,7 @@
       size="default"
       *ngIf="!updating"
       (click)="addTodos()"
-      >Add</ion-button
+      >{{updating ? 'Update' : 'Add'}}</ion-button
     >
     <ion-button
       style="background-color: cornflowerblue"
@@ -35,7 +35,7 @@
         ></ion-icon>
       </ion-item>
 
-      <ion-item slot="end" [disabled]="updating">
+      <ion-item slot="end">
         <ion-icon
           name="trash-outline"
           (click)="handleDelete(item.id)"
