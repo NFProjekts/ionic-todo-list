@@ -11,17 +11,8 @@
       style="background-color: cornflowerblue"
       slot="end"
       size="default"
-      *ngIf="!updating"
       (click)="addTodos()"
       >{{updating ? 'Update' : 'Add'}}</ion-button
-    >
-    <ion-button
-      style="background-color: cornflowerblue"
-      slot="end"
-      size="default"
-      *ngIf="updating"
-      (click)="handleUpdate()"
-      >Update</ion-button
     >
   </ion-item>
 
